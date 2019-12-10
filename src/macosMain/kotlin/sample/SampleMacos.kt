@@ -9,7 +9,6 @@ fun main() {
     // Just your usual mutable state, in the main thread.
 //    runSimpleState()
 
-
     // 2) Frozen State
 //    freezeSomeState()
 //    failChanges()
@@ -19,4 +18,16 @@ fun main() {
 //    canChangeThreadLocal()
 //    globalCounting()
 //    globalCountingFail()
+
+    // 4) Background
+//    basicBackground()
+//    captureState()
+//    captureTooMuch()
+//    captureTooMuchAgain()
+//    captureArgs()
+    captureTooMuchSource()
+
+
+    //Leave this please...
+    waitForWorker()
 }
