@@ -13,4 +13,10 @@ fun main() {
     // 2) Frozen State
 //    freezeSomeState()
 //    failChanges()
+
+    // 3) Global State
+//    cantChangeThis()
+//    canChangeThreadLocal()
+//    globalCounting()
+//    globalCountingFail()
 }
