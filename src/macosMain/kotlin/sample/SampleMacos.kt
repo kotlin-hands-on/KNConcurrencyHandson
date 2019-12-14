@@ -27,15 +27,13 @@ fun main() {
 //    captureArgs()
 //    captureTooMuchSource()
 
-    // 5) Coroutines
-    // See mt_coroutines branch...
-
-    // 6) Atomics
+    // 5) Atomics
 //    atomicIntDemo()
 //    atomicThreadsDemo()
 //    atomicRefDemo()
 
-
+    // 6) Coroutines
+    // See mt_coroutines branch...
 
 
     //Leave this please...
