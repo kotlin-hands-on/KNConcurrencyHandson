@@ -26,13 +26,13 @@ object ThreadLocalGlobalState{
 }
 
 fun globalCounting(){
-    globalCounter++
-    println("count $globalCounter")
-    globalCounter++
-    println("count $globalCounter")
+    globalCounterData.i++
+    println("count ${globalCounterData.i}")
+    globalCounterData.i++
+    println("count ${globalCounterData.i}")
 }
-var globalCounter = 12
 
+var globalCounterData = SomeMutableData(33)
 
 fun globalCountingFail(){
     val worker = Worker.start()
@@ -47,4 +47,15 @@ fun globalCountingFail(){
 
 }
 
-var globalCounterData = SomeMutableData(33)
+fun globalCountingTil(){
+    globalCounter++
+    println("count $globalCounter")
+    globalCounter++
+    background {
+        println("count $globalCounter")
+        globalCounter++
+        println("count $globalCounter")
+    }
+
+}
+var globalCounter = 12
