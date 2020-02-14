@@ -1,9 +1,7 @@
 package sample
 
-fun hello(): String = "Hello, Kotlin/Native!"
-
 fun main() {
-    println(hello())
+    println("\n\n---------------")
 
     // 1) Simple State
     // Just your usual mutable state, in the main thread.
@@ -38,4 +36,6 @@ fun main() {
 
     //Leave this please...
     waitForWorker()
+
+    println("---------------\n\n")
 }

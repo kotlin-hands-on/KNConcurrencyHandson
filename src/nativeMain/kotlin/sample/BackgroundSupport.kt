@@ -1,12 +1,15 @@
 package sample
 
-import platform.Foundation.NSThread
-import kotlin.native.concurrent.Future
+import co.touchlab.stately.concurrency.ThreadRef
 import kotlin.native.concurrent.TransferMode
 import kotlin.native.concurrent.Worker
 import kotlin.native.concurrent.freeze
+import kotlin.system.getTimeMillis
 
 private val worker = Worker.start()
+
+@SharedImmutable
+private val mainThreadRef = ThreadRef()
 
 fun background(block: () -> Unit) {
     worker.execute(TransferMode.SAFE, { block.freeze() }) {
@@ -16,10 +19,14 @@ fun background(block: () -> Unit) {
 
 fun waitForWorker(){
     //Cheating
-    NSThread.sleepForTimeInterval(2.toDouble())
+    val start = getTimeMillis()
+    val end = start + 2000
+    while (getTimeMillis() < end){
+        //Spinning!
+    }
     worker.requestTermination()
 }
 
 @SharedImmutable
 val isMainThread: Boolean
-    get() = NSThread.isMainThread
+    get() = mainThreadRef.same()
