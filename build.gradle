@@ -6,21 +6,30 @@ repositories {
     mavenLocal()
     maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
 }
+
+def hostOs = System.getProperty("os.name")
+def isLinux = hostOs == "Linux"
+def isWindows = hostOs.startsWith("Windows")
+
 kotlin {
     // For ARM, should be changed to iosArm32 or iosArm64
     // For Linux, should be changed to e.g. linuxX64
     // For MacOS, should be changed to e.g. macosX64
     // For Windows, should be changed to e.g. mingwX64
-    macosX64("native") {
-        binaries {
-            executable {
-                // Change to specify fully qualified name of your application's entry point:
-               entryPoint = 'sample.main'
-                // Specify command-line arguments, if necessary:
-                runTask?.args('')
-            }
+    if(isLinux){
+        linuxX64("native"){
+            binaries { executable { entryPoint = 'sample.main' } }
+        }
+    }else if(isWindows){
+        mingwX64("native"){
+            binaries { executable { entryPoint = 'sample.main' } }
+        }
+    }else {
+        macosX64("native"){
+            binaries { executable { entryPoint = 'sample.main' } }
         }
     }
+
     sourceSets {
         // Note: To enable common source sets please comment out 'kotlin.import.noCommonSourceSets' property
         // in gradle.properties file and re-import your project in IDE.
