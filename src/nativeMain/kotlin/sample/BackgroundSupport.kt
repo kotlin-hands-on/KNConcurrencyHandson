@@ -9,7 +9,9 @@ import kotlin.system.getTimeMillis
 private val worker = Worker.start()
 
 @SharedImmutable
-private val mainThreadRef = ThreadRef()
+private val mainThreadRef:ThreadRef by lazy {
+    ThreadRef()
+}
 
 fun background(block: () -> Unit) {
     worker.execute(TransferMode.SAFE, { block.freeze() }) {
