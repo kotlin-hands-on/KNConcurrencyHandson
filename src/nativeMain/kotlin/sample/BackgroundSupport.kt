@@ -1,12 +1,13 @@
 package sample
 
 import co.touchlab.stately.concurrency.ThreadRef
+import kotlin.native.concurrent.Future
 import kotlin.native.concurrent.TransferMode
 import kotlin.native.concurrent.Worker
 import kotlin.native.concurrent.freeze
-import kotlin.system.getTimeMillis
 
 private val worker = Worker.start()
+private val collectFutures = mutableListOf<Future<*>>()
 
 @SharedImmutable
 private val mainThreadRef:ThreadRef by lazy {
@@ -14,18 +15,15 @@ private val mainThreadRef:ThreadRef by lazy {
 }
 
 fun background(block: () -> Unit) {
-    worker.execute(TransferMode.SAFE, { block.freeze() }) {
+    val future = worker.execute(TransferMode.SAFE, { block.freeze() }) {
         it()
     }
+    collectFutures.add(future)
 }
 
 fun waitForWorker(){
-    //Cheating
-    val start = getTimeMillis()
-    val end = start + 2000
-    while (getTimeMillis() < end){
-        //Spinning!
-    }
+    //Wrap it up!
+    collectFutures.forEach { it.result }
     worker.requestTermination()
 }
 
