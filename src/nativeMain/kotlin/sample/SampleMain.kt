@@ -29,7 +29,12 @@ fun main() {
 //    captureTooMuch()
 //    captureTooMuchAgain()
 //    captureArgs()
-//    captureTooMuchSource()
+
+    // 5) Debugging
+//    ensureNeverFrozenFailNow()
+//    ensureNeverFrozenFailLater()
+//    ensureNeverFrozenBackground()
+//    captureTooMuchInit()
 
     //Leave this please...
     teardownThreading()

@@ -37,9 +37,9 @@ class CountingModel{
         }
     }
 
-    @Suppress("UNUSED_PARAMETER", "UseExpressionBody")
     private fun saveToDb(arg:Int){
         //Do some db stuff
+        println("Saving $arg to db")
     }
 }
 
@@ -70,11 +70,4 @@ class CountingModelSafer{
     private fun saveToDb(arg:Int) = background {
         println("Doing db stuff with $arg, in main $isMainThread")
     }
-}
-
-fun captureTooMuchSource(){
-    val model = CountingModel()
-    model.ensureNeverFrozen()
-    model.increment()
-    println("I have ${model.count}") //We won't even get here
 }
