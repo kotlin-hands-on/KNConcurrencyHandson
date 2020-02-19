@@ -37,6 +37,7 @@ class CountingModel{
         }
     }
 
+    @Suppress("UNUSED_PARAMETER", "UseExpressionBody")
     private fun saveToDb(arg:Int){
         //Do some db stuff
     }

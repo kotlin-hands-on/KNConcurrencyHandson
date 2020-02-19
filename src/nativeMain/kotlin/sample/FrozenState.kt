@@ -23,3 +23,12 @@ fun failChanges(){
 }
 
 data class SomeMutableData(var i:Int)
+
+fun freezeChildren(){
+    val dataWithReference = DataWithReference(SomeData("Hello 🐶", 22))
+    dataWithReference.freeze()
+
+    println("Am I frozen? ${dataWithReference.child.isFrozen}")
+}
+
+data class DataWithReference(val child:SomeData)

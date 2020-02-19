@@ -10,7 +10,7 @@ private val worker = Worker.start()
 private val collectFutures = mutableListOf<Future<*>>()
 
 @SharedImmutable
-private val mainThreadRef:ThreadRef by lazy {
+private val mainThreadRef: ThreadRef by lazy {
     ThreadRef()
 }
 
@@ -21,7 +21,12 @@ fun background(block: () -> Unit) {
     collectFutures.add(future)
 }
 
-fun waitForWorker(){
+fun setupThreading() {
+    //Need to record the first thread as the main thread
+    isMainThread
+}
+
+fun teardownThreading() {
     //Wrap it up!
     collectFutures.forEach { it.result }
     worker.requestTermination()
