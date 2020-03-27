@@ -1,11 +1,3 @@
-pluginManagement {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-    }
-}
-
 rootProject.name = 'KNConcurrencySamples'
 
 enableFeaturePreview('GRADLE_METADATA')
