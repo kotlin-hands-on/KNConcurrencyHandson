@@ -3,4 +3,4 @@
 
 # Kotlin Native Concurrency Hands-on
 
-Sample code for [Kotlin Native Concurrency Hands-on](https://github.com/kotlin-hands-on/hands-on)
+Sample code for [Kotlin Native Concurrency Hands-on](https://play.kotlinlang.org/hands-on/Kotlin%20Native%20Concurrency/00_Introduction)
