@@ -32,6 +32,5 @@ private val mainThreadRef: ThreadRef by lazy {
     ThreadRef()
 }
 
-@SharedImmutable
 val isMainThread: Boolean
     get() = mainThreadRef.same()
