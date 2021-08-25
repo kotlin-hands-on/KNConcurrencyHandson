@@ -20,7 +20,7 @@ fun main() {
 //    threadLocalDifferentThreads()
 //    companionAlsoFrozen()
 //    globalCounting()
-//    globalCountingFail()
+//    globalCountingDontFail()
 //    globalCountingSharedFail()
 
     // 4) Background

@@ -19,14 +19,14 @@ fun ensureNeverFrozenBackground() {
     val sd = SomeData("a", 1)
     sd.ensureNeverFrozen()
     background {
-        println("Won't get here $sd")
+        println("We will get here with the new MM $sd")
     }
 }
 
 fun captureTooMuchInit() {
     val model = CountingModelEnsure()
     model.increment()
-    println("I have ${model.count}") //We won't even get here
+    println("I have ${model.count}") //We will get here with the new MM
 }
 
 class CountingModelEnsure{

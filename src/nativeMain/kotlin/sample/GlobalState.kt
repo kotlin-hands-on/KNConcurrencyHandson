@@ -7,7 +7,7 @@ import kotlin.native.concurrent.Worker
 fun cantChangeThis(){
     println("i ${DefaultGlobalState.i}")
     DefaultGlobalState.i++
-    println("i ${DefaultGlobalState.i}") //We won't get here
+    println("i ${DefaultGlobalState.i}") // We will get here with the new MM
 }
 
 object DefaultGlobalState{
@@ -37,7 +37,7 @@ fun threadLocalDifferentThreads(){
 fun companionAlsoFrozen(){
     println("i ${GlobalStateCompanion.i}")
     GlobalStateCompanion.i++
-    println("i ${GlobalStateCompanion.i}") //We won't get here
+    println("i ${GlobalStateCompanion.i}") // We will get here with the new MM
 }
 
 class GlobalStateCompanion{
@@ -55,7 +55,7 @@ fun globalCounting(){
 
 var globalCounterData = SomeMutableData(33)
 
-fun globalCountingFail(){
+fun globalCountingDontFail(){
     background {
         try {
             globalCounterData.i++
@@ -69,6 +69,6 @@ fun globalCountingFail(){
 @SharedImmutable
 val globalCounterDataShared = SomeMutableData(33)
 
-fun globalCountingSharedFail(){
+fun globalCountingSharedDontFail(){
     globalCounterDataShared.i++
 }

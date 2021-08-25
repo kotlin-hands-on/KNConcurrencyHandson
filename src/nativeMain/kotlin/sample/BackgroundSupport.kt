@@ -4,10 +4,9 @@ import co.touchlab.stately.concurrency.ThreadRef
 import kotlin.native.concurrent.Future
 import kotlin.native.concurrent.TransferMode
 import kotlin.native.concurrent.Worker
-import kotlin.native.concurrent.freeze
 
 fun background(block: () -> Unit) {
-    val future = worker.execute(TransferMode.SAFE, { block.freeze() }) {
+    val future = worker.execute(TransferMode.SAFE, { block }) {
         it()
     }
     collectFutures.add(future)
@@ -27,7 +26,6 @@ fun teardownThreading() {
     worker.requestTermination()
 }
 
-@SharedImmutable
 private val mainThreadRef: ThreadRef by lazy {
     ThreadRef()
 }

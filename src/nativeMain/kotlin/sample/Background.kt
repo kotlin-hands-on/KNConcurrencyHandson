@@ -24,7 +24,7 @@ fun captureTooMuch(){
     println("I have ${model.count}")
 
     model.increment()
-    println("I have ${model.count}") //We won't get here
+    println("I have ${model.count}") // We will get here the new MM
 }
 
 class CountingModel{
