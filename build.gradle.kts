@@ -1,11 +1,8 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "1.6.0-M1-139"
+    id("org.jetbrains.kotlin.multiplatform") version "1.6.0-M1"
 }
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev")
-    }
 }
 
 val hostOs = System.getProperty("os.name")

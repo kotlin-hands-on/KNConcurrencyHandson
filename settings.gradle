@@ -1,10 +1,1 @@
-pluginManagement {
-    repositories {
-        maven {
-            url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev"
-        }
-        gradlePluginPortal()
-    }
-}
-
 rootProject.name = 'KNConcurrencySamples'
